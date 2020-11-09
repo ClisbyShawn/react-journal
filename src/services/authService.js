@@ -1,3 +1,4 @@
+import jwt_decode from "jwt-decode";
 import http from "./httpService";
 
 const tokenKey = "tokenKey";
@@ -23,7 +24,10 @@ async function register({ name, email, password }) {
   localStorage.setItem(tokenKey, headers["x-auth-token"]);
 }
 
-function getCurrentUser() {}
+function getCurrentUser() {
+  const user = jwt_decode(localStorage.getItem(tokenKey));
+  return user;
+}
 
 export default {
   login,

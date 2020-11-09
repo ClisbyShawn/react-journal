@@ -16,6 +16,7 @@ class LoginForm extends Form {
     try {
       const { data: login } = this.state;
       await auth.login(login);
+      window.location = "/dashboard";
     } catch (error) {
       errorService.handleNetworkError(error);
     }
