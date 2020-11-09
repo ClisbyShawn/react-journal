@@ -1,15 +1,13 @@
 import { toast } from "react-toastify";
 
 function handleNetworkError(error) {
-  //expected error vs. unexpected errors
-
   const expectedError =
     error.response &&
     error.response.status >= 400 &&
     error.response.status <= 499;
 
   if (!expectedError) {
-    toast.error(error);
+    toast.error(`${error.name}: ${error.message}`);
     return;
   }
 
