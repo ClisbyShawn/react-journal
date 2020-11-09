@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 
@@ -7,8 +8,12 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <LoginForm />
-        <RegisterForm />
+        <ToastContainer />
+        <Switch>
+          <Route path="/login" component={LoginForm} />
+          <Route path="/register" component={RegisterForm} />
+          <Redirect from="/" to="/login" />
+        </Switch>
       </div>
     );
   }

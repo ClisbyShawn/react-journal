@@ -1,5 +1,6 @@
 import React from "react";
 import Form from "./common/Form";
+import auth from "../services/authService";
 
 class RegisterForm extends Form {
   state = {
@@ -11,8 +12,9 @@ class RegisterForm extends Form {
     errors: {},
   };
 
-  doSubmit = () => {
-    console.log("Register me in the system...");
+  doSubmit = async () => {
+    const { data: registration } = this.state;
+    await auth.register(registration);
   };
 
   render() {

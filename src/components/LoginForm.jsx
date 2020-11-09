@@ -1,5 +1,6 @@
 import React from "react";
 import Form from "./common/Form";
+import auth from "../services/authService";
 
 class LoginForm extends Form {
   state = {
@@ -10,8 +11,9 @@ class LoginForm extends Form {
     errors: {},
   };
 
-  doSubmit = () => {
-    console.log("Log me in...");
+  doSubmit = async () => {
+    const { data: login } = this.state;
+    await auth.login(login);
   };
 
   render() {
