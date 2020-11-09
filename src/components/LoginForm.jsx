@@ -2,6 +2,7 @@ import React from "react";
 import Form from "./common/Form";
 import auth from "../services/authService";
 import errorService from "../services/errorService";
+import Joi from "joi-browser";
 
 class LoginForm extends Form {
   state = {
@@ -12,10 +13,21 @@ class LoginForm extends Form {
     errors: {},
   };
 
+  schema = {
+    email: Joi.string()
+      .label("Email")
+      .email({
+        minDomainSegments: 2,
+        tlds: { allow: ["com", "net", "edu", "org"] },
+      })
+      .required(),
+    password: Joi.string().label("Password").min(5).max(12).required(),
+  };
+
   doSubmit = async () => {
     try {
-      const { data: login } = this.state;
-      await auth.login(login);
+      const { data } = this.state;
+      await auth.login(data);
       window.location = "/dashboard";
     } catch (error) {
       errorService.handleAuthErrors(error);
