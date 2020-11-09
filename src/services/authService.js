@@ -3,19 +3,11 @@ import http from "./httpService";
 const tokenKey = "tokenKey";
 
 async function login({ email, password }) {
-  try {
-    const { data: token } = await http.post(
-      "http://localhost:5000/auth/login",
-      {
-        email,
-        password,
-      }
-    );
-    localStorage.setItem(tokenKey, token);
-  } catch (error) {
-    const { name, message } = error.response.data;
-    console.log(`${name}: ${message}`);
-  }
+  const { data: token } = await http.post("http://localhost:5000/auth/login", {
+    email,
+    password,
+  });
+  localStorage.setItem(tokenKey, token);
 }
 
 function logout() {
@@ -23,17 +15,12 @@ function logout() {
 }
 
 async function register({ name, email, password }) {
-  try {
-    const { headers } = await http.post("http://localhost:5000/auth/register", {
-      name,
-      email,
-      password,
-    });
-    localStorage.setItem(headers["x-auth-token"]);
-  } catch (error) {
-    const { name, message } = error.response.data;
-    console.log(`${name}: ${message}`);
-  }
+  const { headers } = await http.post("http://localhost:5000/auth/register", {
+    name,
+    email,
+    password,
+  });
+  localStorage.setItem(tokenKey, headers["x-auth-token"]);
 }
 
 function getCurrentUser() {}

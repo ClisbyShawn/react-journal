@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 import Form from "./common/Form";
 import auth from "../services/authService";
 
@@ -12,8 +13,13 @@ class LoginForm extends Form {
   };
 
   doSubmit = async () => {
-    const { data: login } = this.state;
-    await auth.login(login);
+    try {
+      const { data: login } = this.state;
+      await auth.login(login);
+    } catch (error) {
+      const { name, message } = error.response.data;
+      toast.error(`${name}: ${message}`);
+    }
   };
 
   render() {

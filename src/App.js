@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 
