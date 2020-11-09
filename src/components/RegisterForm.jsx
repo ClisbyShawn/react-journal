@@ -17,6 +17,7 @@ class RegisterForm extends Form {
     try {
       const { data: registration } = this.state;
       await auth.register(registration);
+      window.location = "/dashboard";
     } catch (error) {
       errorService.handleNetworkError(error);
     }
