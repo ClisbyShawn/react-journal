@@ -19,7 +19,7 @@ class RegisterForm extends Form {
       await auth.register(registration);
       window.location = "/dashboard";
     } catch (error) {
-      errorService.handleNetworkError(error);
+      errorService.handleAuthErrors(error);
     }
   };
 

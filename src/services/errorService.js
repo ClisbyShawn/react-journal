@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-function handleNetworkError(error) {
+function handleAuthErrors(error) {
   const expectedError =
     error.response &&
     error.response.status >= 400 &&
@@ -16,5 +16,5 @@ function handleNetworkError(error) {
 }
 
 export default {
-  handleNetworkError,
+  handleAuthErrors,
 };

@@ -18,7 +18,7 @@ class LoginForm extends Form {
       await auth.login(login);
       window.location = "/dashboard";
     } catch (error) {
-      errorService.handleNetworkError(error);
+      errorService.handleAuthErrors(error);
     }
   };
 
