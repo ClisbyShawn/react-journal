@@ -1,7 +1,7 @@
 import React from "react";
-import { toast } from "react-toastify";
 import Form from "./common/Form";
 import auth from "../services/authService";
+import errorService from "../services/errorService";
 
 class RegisterForm extends Form {
   state = {
@@ -18,8 +18,7 @@ class RegisterForm extends Form {
       const { data: registration } = this.state;
       await auth.register(registration);
     } catch (error) {
-      const { name, message } = error.response.data;
-      toast.error(`${name}: ${message}`);
+      errorService.handleNetworkError(error);
     }
   };
 
