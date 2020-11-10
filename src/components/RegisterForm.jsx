@@ -1,8 +1,9 @@
 import React from "react";
+import Joi from "joi-browser";
+import { Link } from "react-router-dom";
 import Form from "./common/Form";
 import auth from "../services/authService";
 import errorService from "../services/errorService";
-import Joi from "joi-browser";
 
 class RegisterForm extends Form {
   state = {
@@ -46,6 +47,7 @@ class RegisterForm extends Form {
           {this.renderInputField("password", "Password", "password")}
           {this.renderButton("Register")}
         </form>
+        <Link to="/login">Already have an account? Login</Link>
       </div>
     );
   }
