@@ -12,7 +12,20 @@ class Dashboard extends Component {
 
   render() {
     const { user } = this.state;
-    return <h1>Dashboard, Welcome {user.name}</h1>;
+    return (
+      <div>
+        <h1>Dashboard, Welcome {user.name}</h1>
+        <button
+          className="btn btn-warning"
+          onClick={() => {
+            auth.logout();
+            window.location = "/";
+          }}
+        >
+          Logout
+        </button>
+      </div>
+    );
   }
 }
 

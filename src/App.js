@@ -14,8 +14,16 @@ class App extends Component {
         <Switch>
           <Route path="/login" component={LoginForm} />
           <Route path="/register" component={RegisterForm} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Redirect from="/" to="/login" />
+          <Route
+            path="/dashboard"
+            render={() =>
+              localStorage.getItem("tokenKey") ? <Dashboard /> : <LoginForm />
+            }
+          />
+          <Redirect
+            from="/"
+            to={localStorage.getItem("tokenKey") ? "/dashboard" : "/login"}
+          />
         </Switch>
       </div>
     );
