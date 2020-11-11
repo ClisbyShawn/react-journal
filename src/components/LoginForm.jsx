@@ -29,7 +29,7 @@ class LoginForm extends Form {
     try {
       const { data } = this.state;
       await auth.login(data);
-      window.location = "/dashboard";
+      window.location = "/overview";
     } catch (error) {
       errorService.handleAuthErrors(error);
     }
@@ -37,7 +37,7 @@ class LoginForm extends Form {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <h1>Login Form</h1>
         <form onSubmit={this.handleSubmit}>
           {this.renderInputField("email", "Email")}

@@ -1,0 +1,32 @@
+.sidebar {
+  position: fixed;
+  margin: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  padding: 3%;
+  list-style-type: none;
+  text-align: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: #fff;
+}
+
+.sidebar li {
+  font-size: 18px;
+  margin-top: 75%;
+}
+
+.sidebar-bottom {
+  position: absolute;
+  bottom: 0;
+}
+
+.small-print {
+  font-size: x-small;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.5);
+}
+.nav-text {
+  color: #fff;
+}

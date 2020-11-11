@@ -31,7 +31,7 @@ class RegisterForm extends Form {
     try {
       const { data } = this.state;
       await auth.register(data);
-      window.location = "/dashboard";
+      window.location = "/overview";
     } catch (error) {
       errorService.handleAuthErrors(error);
     }
@@ -39,7 +39,7 @@ class RegisterForm extends Form {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <h1>Register Form</h1>
         <form onSubmit={this.handleSubmit}>
           {this.renderInputField("name", "Name")}
